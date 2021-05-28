@@ -12,7 +12,6 @@
 
 .menuBar {
   padding: 0 !important;
-  background-color: #ffa353 !important;
 }
 
 .menuOptions,
@@ -27,5 +26,5 @@
 }
 
 .nav-link:hover {
-  background-color: #e67f25;
+  background-color: #eeeeee;
 }

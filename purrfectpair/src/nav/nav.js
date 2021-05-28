@@ -7,6 +7,7 @@ import SignupModal from "../SignupPage/signup";
 
 function NavMenu() {
   const [signinModalShow, setSigninModalShow] = useState(false);
+  const [signupModalShow, setSignupModalShow] = useState(false);
 
   return (
     <>
@@ -15,8 +16,8 @@ function NavMenu() {
         setShow={setSigninModalShow}
       />
       <SignupModal
-        modalShow={signinModalShow} //createModalShow
-        setShow={setSigninModalShow}
+        modalShow={signupModalShow} //createModalShow
+        setShow={setSignupModalShow}
       />
       <nav class="menuBar navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -52,6 +53,13 @@ function NavMenu() {
                 onClick={() => setSigninModalShow(true)}
               >
                 <li>Sign In</li>
+              </Link>
+              <Link
+                to="/signin"
+                className="nav-link"
+                onClick={() => setSignupModalShow(true)}
+              >
+                <li>Sign Up</li>
               </Link>
             </ul>
           </div>

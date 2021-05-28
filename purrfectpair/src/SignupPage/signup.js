@@ -7,12 +7,18 @@ import { VscChromeClose } from "react-icons/vsc";
 // import { auth } from "../../Firebase";
 // import { useAuth } from "../../conexts/AuthContext";
 
-const LoginModal = ({ modalShow, setShow }) => {
+const SignupModal = ({ modalShow, setShow }) => {
     const nameRef = useRef();
     const emailRef = useRef();
     const usernameRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
+
+    //   const { login } = useAuth();
+    //   const { addAdminRole } = useAuth();
+    //const [show, setShow] = useState(true);
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     return (
         <>
@@ -32,14 +38,28 @@ const LoginModal = ({ modalShow, setShow }) => {
                         <Form.Control
                             className="inputText"
                             required
+                            type="text"
+                            ref={nameRef}
+                            placeholder="Full Name"
+                        />
+                    </Form.Group>
+                    <Form.Group className="formGroupStyle" controlId="formBasicEmail">
+                        <Form.Control
+                            className="inputText"
+                            required
                             type="email"
                             ref={emailRef}
-                            placeholder="E-mail  ✉️"
-                        // onChange={(text) => setEmail(text.target.value)}
+                            placeholder="E-mail"
                         />
-                        {/* <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-          </Form.Text> */}
+                    </Form.Group>
+                    <Form.Group className="formGroupStyle" controlId="formBasicEmail">
+                        <Form.Control
+                            className="inputText"
+                            required
+                            type="text"
+                            ref={usernameRef}
+                            placeholder="User Name"
+                        />
                     </Form.Group>
                     <Form.Group className="formGroupStyle" controlId="formBasicEmail">
                         <Form.Control
@@ -47,14 +67,20 @@ const LoginModal = ({ modalShow, setShow }) => {
                             required
                             type="password"
                             ref={passwordRef}
-                            placeholder="Password  👀"
+                            placeholder="Password"
                         // onChange={(text) => setEmail(text.target.value)}
                         />
-
                     </Form.Group>
-                    <div class="signinBtn">Sign In</div>
-                    <h4 className="signinText">Forgot your password? <Link className="signinLink" to="#">Click Here</Link></h4>
-                    <h4 className="signinText">Not a friend yet? <Link className="signinLink" to="#">Click Here</Link></h4>
+                    <Form.Group className="formGroupStyle" controlId="formBasicEmail">
+                        <Form.Control
+                            className="inputText"
+                            required
+                            type="password"
+                            ref={passwordConfirmRef}
+                            placeholder="Password Confirmation"
+                        />
+                    </Form.Group>
+                    <div class="signinBtn">Sign Up</div>
                 </div>
             </Modal>
             <auth />
@@ -62,4 +88,4 @@ const LoginModal = ({ modalShow, setShow }) => {
     );
 };
 
-export default LoginModal;
+export default SignupModal;
