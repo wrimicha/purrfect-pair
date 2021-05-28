@@ -12,6 +12,7 @@ export default function Home() {
   const [dogClicked, setDogClicked] = useState(false);
   const [cards, setCards] = useState([]);
   const [fetchedData,setFetchedData] = useState([]);
+  const [gender,setGender] = useState("");
   useEffect( () => {
     fetch('https://petpracticeapi.herokuapp.com/pets').then((res)=>{
       res.json().then((resp)=>{
@@ -40,6 +41,7 @@ export default function Home() {
   return (
     <div className="animalCardHolder">
       <div className="filterGroup">
+        <div id="firstFilterGroup">
         <div className="searchBar">
           <input
             className="searchInput"
@@ -67,6 +69,16 @@ export default function Home() {
           <input type="radio" id="radio3" name="radios" value="Cat" />
           <label for="radio3">Cat</label>
         </div>
+        </div>
+        <div id="secondFilterGroup">
+        <div className="dropdown">
+        <select className="dropdownselect" name="type" onChange={event=>setGender(event.target.value)}>
+          <option value="" selected="selected">Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          </select>
+        </div>
+      </div>
       </div>
       {/* <nav class="menuBar navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
@@ -82,7 +94,7 @@ export default function Home() {
         {cards.filter(
           (item) =>
             item.props.title.includes(nameFilter) &&
-            item.props.type.includes(type)
+            item.props.type.includes(type) 
         )}
       </div>
     </div>
