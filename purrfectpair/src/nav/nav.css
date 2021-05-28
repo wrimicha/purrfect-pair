@@ -1,0 +1,31 @@
+.menuOptions,
+.navbar-brand {
+  justify-content: flex-end;
+  margin-right: 120px;
+  margin-left: 120px;
+  padding: 10px;
+}
+
+.menuOptions li {
+  margin: 15px;
+}
+
+.menuBar {
+  padding: 0 !important;
+  background-color: #ffa353 !important;
+}
+
+.menuOptions,
+.menuOptions .navlink {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.navbar,
+.navbar a {
+  font-size: 25px;
+}
+
+.nav-link:hover {
+  background-color: #e67f25;
+}

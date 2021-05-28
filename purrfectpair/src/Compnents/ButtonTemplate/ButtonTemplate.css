@@ -1,0 +1,9 @@
+#button{
+    border-radius: 17px;
+    padding:3px 15px;
+    border-width: 1px;
+}
+#button:hover{
+    background-color: darkgray;
+    opacity: 0.5;
+}

@@ -1,0 +1,68 @@
+.animalCardHolder {
+  display: flex;
+  flex-wrap: wrap;
+}
+/* .btn-outline-warning {
+  color: #ffa353;
+  border-color: #ffa353;
+}
+.btn-outline-warning:hover,
+.btn-outline-warning:visited,
+.btn-outline-warning:active,
+.btn-outline-warning::after {
+  background-color: #ffa353;
+} */
+
+.radio-toolbar input[type="radio"] {
+  display: none;
+}
+
+.radio-toolbar label {
+  color: black;
+  border: 2px solid;
+  border-color: #ffa353 !important;
+  background-color: #fff;
+  border-radius: 28px;
+  margin-left: 20px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: bold;
+}
+
+.radio-toolbar input[type="radio"]:checked + label {
+  background-color: #ffa353;
+  color: white;
+  transition: all 0.5s;
+  border-radius: 21px;
+}
+
+.filterGroup {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 40px;
+}
+
+.searchBar {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.animalType {
+  flex: 1;
+  margin-left: 30px;
+  display: flex;
+}
+
+.searchInput {
+  flex: 1;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.searchInput:focus {
+  outline: 0;
+  border: 3px solid #ffa353;
+}

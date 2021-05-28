@@ -1,0 +1,116 @@
+/* .signinBg {
+  width: 100%;
+  height: 600px;
+  background-color: #ffa353;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+} */
+
+.formMain {
+  margin: 20px;
+  margin-bottom: 60px;
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.modal-content {
+  font-family: 'Nunito', sans-serif;
+  border-radius: 20px;
+  border: 0;
+  width: 100%;
+  /* background-color: #f5ede5; */
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  border-radius: 50px;
+  box-shadow:
+    0 4px 4px rgba(0, 0, 0, 0.12),
+    0 8px 8px rgba(0, 0, 0, 0.12),
+    0 10px 10px rgba(0, 0, 0, 0.12),
+    0 25px 25px rgba(0, 0, 0, 0.12);
+}
+
+.mainModal {
+  /* width: 50% !important;
+  height: 50% !important; */
+}
+
+.formGroupStyle {
+  text-align: center;
+  margin: 80px;
+}
+
+.title {
+  margin-top: 50px;
+  margin-bottom: 90px;
+  font-weight: 700;
+}
+
+.text-muted {
+  color: rgb(60, 60, 60) !important;
+  font-size: 17px;
+}
+
+.closeBtn{
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background-color: #ffa35391;
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.closeBtn:hover{
+  background-color: #ffa353;
+  transition: all 0.4s;
+}
+
+.inputText{
+  padding: 15px;
+  border: 3px solid grey;
+  border-radius: 40px;
+  margin-bottom: 6px;
+  margin-top: 20px;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.12),
+    0 2px 2px rgba(0, 0, 0, 0.06);
+}
+
+
+.inputText:focus{
+  /* border: 3px solid #ffa353; */
+  outline: none;
+  /* outline-color: #ffa353 !important; */
+}
+
+.signinBtn {
+  background-color: #ffa353;
+  padding: 12px;
+  border-radius: 50px;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  margin: 7%;
+}
+
+.signinBtn:hover {
+  background-color: #e18c42;
+  transition: all 0.3s;
+}
+
+.signinText{
+  margin-top: 50px;
+  font-weight: 600;
+}
+
+.signinLink{
+  text-decoration: none;
+  color: #ffa353;
+  font-weight: 700;
+}
