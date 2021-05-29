@@ -18,7 +18,7 @@ export default function Home() {
   const [fetchedData, setFetchedData] = useState([]);
   const [genderToggle, setGenderToggle] = useState(false);
   const [gender, setGender] = useState("");
-  const genders = ["","Male","Female"];
+  const [hair,setHair] = useState("");
   useEffect(() => {
     fetch('https://purrfectpairapi.herokuapp.com/pets').then((res) => {
       res.json().then((resp) => {
@@ -76,8 +76,11 @@ export default function Home() {
         </div>
         <div id="secondFilterGroup">
           <div className="dropdown">
-            <DropdownNew items={genders} property={gender} setProperty={setGender} blankValue="Gender"/>
-          </div>
+            <DropdownNew items={["","Male","Female"]} property={gender} setProperty={setGender} blankValue="Gender"/>
+            </div>
+            <div className="dropdown">
+            <DropdownNew items={["","Short","Medium","Long"]} property={hair} setProperty={setHair} blankValue="Hair"/>
+            </div>
         </div>
       </div>
       {/* <nav class="menuBar navbar navbar-expand-lg navbar-light bg-light">

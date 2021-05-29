@@ -104,3 +104,7 @@ select{
 .MenuItem:hover{
   background-color: #ffa353;
 }
+#secondFilterGroup{
+  display: flex;
+  flex-direction: row;
+}

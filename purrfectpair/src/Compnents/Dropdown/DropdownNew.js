@@ -21,7 +21,7 @@ export default function DropdownNew(props){
       }
     
       const menu = (
-        <Menu style={{ marginLeft: -23, borderBottomLeftRadius: 30, borderBottomRightRadius: 30 }}>
+        <Menu style={{ marginLeft: -23, borderBottomLeftRadius: 30, borderBottomRightRadius: 30,marginTop:10}}>
           <Menu.Item className="MenuItem" style={{paddingLeft:30,paddingRight:30,marginTop:-5}}>
             <a target="_blank" rel="noopener noreferrer" onClick={() => props.setProperty(props.items[0])}>
               {props.blankValue}
