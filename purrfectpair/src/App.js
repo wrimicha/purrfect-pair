@@ -3,7 +3,7 @@ import "./App.css";
 //import { Home } from "./views/Signup";
 //import { About } from "./views/Signin";
 //import CreateGuide from "./views/Modals/CreateGuide";
-import SignupModal from "./SignupPage/signup";
+//import SignupModal from "./SignupPage/signup";
 //import LoginModal from "./views/Modals/Login";
 //import Account from "./views/Account";
 import {
@@ -21,10 +21,8 @@ import { AuthProvider } from "./conexts/AuthContext";
 //import PrivateRoute from "./components/Nav/PrivateRoute";
 import NavMenu from "./nav/nav";
 import HomePage from "./HomePage/home";
-// import HomePage from "./HomePage/home";
 import Contact from "./ContactPage/contact";
 import ViewPet from "./ViewPetPage/viewPet";
-import Signin from "./SigninPage/signin";
 
 function App() {
   const [userSignedIn, setUserSignedIn] = useState(false);
@@ -41,6 +39,7 @@ function App() {
 
       <Router>
         <AuthProvider>
+
           <Nav />
           <Switch>
             <Route exact path="/home" component={HomePage} />
@@ -48,7 +47,7 @@ function App() {
               <Redirect to="/home" />
             </Route>
             <Route exact path="/contact" component={Contact} />
-            <Route exact path="/signin" component={Signin} />
+            {/* <Route exact path="/signin" component={Signin} /> */}
             <Route path="/viewPet/:id" component={ViewPet} />
           </Switch>
         </AuthProvider>

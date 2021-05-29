@@ -4,14 +4,18 @@ import { Link } from "react-router-dom";
 import "../nav/nav.css";
 import SigninModal from "../SigninPage/signin";
 import SignupModal from "../SignupPage/signup";
+import UserInfo from "../UserInfo/UserInfo";
 //import { auth } from "../Firebase";
 import { useAuth } from "../conexts/AuthContext";
+import DropdownNew from "../Compnents/Dropdown/DropdownNew";
+
 
 function NavMenu() {
   const { currentUser, logout } = useAuth();
   const [signinModalShow, setSigninModalShow] = useState(false);
   const [signupModalShow, setSignupModalShow] = useState(false);
   const [userInfoShow, setUserInfoShow] = useState(false);
+  const [userOption, setUserOption] = useState("");
 
   return (
     <>
@@ -22,6 +26,10 @@ function NavMenu() {
       <SignupModal
         modalShow={signupModalShow} //createModalShow
         setShow={setSignupModalShow}
+      />
+      <UserInfo
+        modalShow={userInfoShow} //createModalShow
+        setShow={setUserInfoShow}
       />
       <nav className="menuBar navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
@@ -63,24 +71,23 @@ function NavMenu() {
                 </li>
               </Link>
               <Link
-                to="/signin"
                 className="nav-link"
                 onClick={() => setSigninModalShow(true)}
               >
                 <li>Sign In</li>
               </Link>
               <Link
-                to="/signin"
                 className="nav-link"
                 onClick={() => setSignupModalShow(true)}
               >
                 <li>Sign Up</li>
               </Link>
-              <Link
-                onClick={() => setUserInfoShow(true)}
-                className="nav-link"
-              >
-                <li>{currentUser && currentUser.email}</li>
+              <Link>
+                <li>
+                  <div className="dropdown">
+                    <DropdownNew items={["", "Account Info", "Favourites", "Signout"]} property={userOption} setProperty={setUserOption} blankValue={currentUser && currentUser.email} />
+                  </div>
+                </li>
               </Link>
             </ul>
           </div>

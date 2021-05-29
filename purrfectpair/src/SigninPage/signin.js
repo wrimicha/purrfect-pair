@@ -7,6 +7,8 @@ import { auth } from "../Firebase";
 import { useAuth } from "../conexts/AuthContext";
 
 const LoginModal = ({ modalShow, setShow }) => {
+  const { currentUser } = useAuth();
+  const [bio, setBio] = useState("");
   const emailRef = useRef();
   const passwordRef = useRef();
   const { login } = useAuth();
