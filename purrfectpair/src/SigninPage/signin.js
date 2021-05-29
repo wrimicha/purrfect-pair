@@ -33,10 +33,12 @@ const LoginModal = ({ modalShow, setShow }) => {
 
     setError("");
     setLoading(true);
-    await login(emailRef.current.value, passwordRef.current.value).then(
+    login(emailRef.current.value, passwordRef.current.value).then(
       () => handleClose()
       // .then(() => history.push("/"))
-    );
+    ).catch((e) => {
+      setError(e.message);
+    });
     addAdminRole();
     setError("Failed to sign in");
     setLoading(false);
