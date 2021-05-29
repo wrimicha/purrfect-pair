@@ -22,6 +22,7 @@ export default function AnimalCard(props) {
         <div className="bg-Text">
           <h4>{props.title}</h4>
           <p className="petInfo">Type: {props.type}</p>
+          <p className="petInfo">{props.gender}</p>          
           <p className="petInfo">{props.description}</p>
         </div>
       </div>

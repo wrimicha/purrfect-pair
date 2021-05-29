@@ -86,15 +86,21 @@
   padding-right: 20px;
   font-weight: bold;
 }
-
 .dropdownselect:focus:not(.focus-visible){
   outline:none;
 }
-
+.dropdownselect option{
+  background-color: #ffa353;
+  padding: 10px;
+  font-size: medium;
+}
 .dropdownselect{
   font-weight: bold;
 }
 
 select{
   border: none;
+}
+.MenuItem:hover{
+  background-color: #ffa353;
 }
