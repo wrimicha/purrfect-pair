@@ -9,6 +9,7 @@ import { DownOutlined } from '@ant-design/icons';
 import ButtonTemplate from "../Compnents/ButtonTemplate/ButtonTemplate";
 import colors from "../constants/colors";
 import DropdownNew from "../Compnents/Dropdown/DropdownNew";
+import DropdownConditional from "../Compnents/Dropdown/DropdownConditional";
 export default function Home() {
   const [nameFilter, setNameFilter] = useState("");
   const [type, setType] = useState("");
@@ -18,7 +19,9 @@ export default function Home() {
   const [fetchedData, setFetchedData] = useState([]);
   const [genderToggle, setGenderToggle] = useState(false);
   const [gender, setGender] = useState("");
-  const [hair,setHair] = useState("");
+  const [hair, setHair] = useState("");
+  const [size, setSize] = useState("");
+  const [breed, setBreed] = useState("");
   useEffect(() => {
     fetch('https://purrfectpairapi.herokuapp.com/pets').then((res) => {
       res.json().then((resp) => {
@@ -74,16 +77,141 @@ export default function Home() {
             <label for="radio3">Cats</label>
           </div>
           <div className="dropdown">
-          <DropdownNew items={["","rabbits","birds","frogs","fishes", "frogs", "geckos", "iguanas", "lizards","scorpions","snakes","tarantulas","toads","tortoises","turtles","hamsters"]} property={type} setProperty={setType} blankValue="Other"/>
+            <DropdownNew items={["", "rabbits", "birds", "frogs", "fishs", "frogs", "geckos", "iguanas", "lizards", "scorpions", "snakes", "tarantulas", "toads", "tortoises", "turtles", "hamsters"]} property={type} setProperty={setType} blankValue="Other" />
           </div>
         </div>
         <div id="secondFilterGroup">
           <div className="dropdown">
-            <DropdownNew items={["","Male","Female"]} property={gender} setProperty={setGender} blankValue="Gender"/>
-            </div>
-            <div className="dropdown">
-            <DropdownNew items={["","Short","Medium","Long"]} property={hair} setProperty={setHair} blankValue="Hair"/>
-            </div>
+            <DropdownNew items={["", "Male", "Female"]} property={gender} setProperty={setGender} blankValue="Gender" />
+          </div>
+          <div className="dropdown">
+            <DropdownNew items={["", "Short", "Medium", "Long"]} property={hair} setProperty={setHair} blankValue="Hair" />
+          </div>
+          <div className="dropdown">
+            <DropdownConditional selectedPet={type} items={{ "": [], "cats": ["young", "adult", "senior", "kitten"], "dogs": ["young", "adult", "senior", "puppy"], "rabbits": ["young", "adult", "senior"], "birds": ["Small", "Medium", "Large"], "hamsters": ["young", "adult", "senior"], "others": ["Small", "Medium", "Large"] }} property={size} setProperty={setSize} blankValue="Size" />
+          </div>
+          <div className="dropdown">
+            <DropdownConditional selectedPet={type}
+              items={{
+                "": [], "cats": ["Abyssinian", "American Bobtail", "American Curl", "American Shorthair", "American Wirehair", "Balinese", "Bengal", "Birman", "Bombay", "British Shorthair", "Burmese", "Calico", "Chartreux", "Colorpoint Shorthair", "Cornish Rex", "Cymric", "Devon Rex", "Domestic Longhair", "Domestic Mediumhair", "Domestic Shorthair", "Egyptian Mau", "European Burmese", "Exotic", "Havana Brown", "Hemingway/Polydactyl", "Himalayan", "Japanese Bobtail", "Japanese", "Korat", "LaPerm", " Maine Coon", "Manx", "Munchkin", "Nebelung", "Norwegian Forest Cat", "Ocicat", "Oriental", "Persian", "Polydactyl/Hemingway", "RagaMuffin", "Ragdoll", "Russian Blue", "Scottish Fold", "Selkirk Rex", "Siamese", "Siberian", "Singapura", "Snowshoe", "Somali", "Sphynx", "Tonkinese", "Turkish Angora", "Turkish Van"], "dogs": ["young", "adult", "senior", "puppy"], "rabbits": ["young", "adult", "senior"], "birds": ["Small", "Medium", "Large"], "hamsters": ["young", "adult", "senior"], "others": ["Small", "Medium", "Large"], "dogs": [
+                  "affenpinscher",
+                  "Afghan hound",
+                  "Airedale terrier",
+                  "Akita",
+                  "Alaskan Malamute",
+                  "American Staffordshire terrier",
+                  "American water spaniel",
+                  "Australian cattle dog",
+                  "Australian shepherd",
+                  "Australian terrier",
+                  "basenji",
+                  "basset hound",
+                  "beagle",
+                  "bearded collie",
+                  "Bedlington terrier",
+                  "Bernese mountain dog",
+                  "bichon frise",
+                  "black and tan coonhound",
+                  "bloodhound",
+                  "border collie",
+                  "border terrier",
+                  "borzoi",
+                  "Boston terrier",
+                  "bouvier des Flandres",
+                  "boxer",
+                  "briard",
+                  "Brittany",
+                  "Brussels griffon",
+                  "bull terrier",
+                  "bulldog",
+                  "bullmastiff",
+                  "cairn terrier",
+                  "Canaan dog",
+                  "Chesapeake Bay retriever",
+                  "Chihuahua",
+                  "Chinese crested",
+                  "Chinese shar-pei",
+                  "chow chow",
+                  "Clumber spaniel",
+                  "cocker spaniel",
+                  "collie",
+                  "curly-coated retriever",
+                  "dachshund",
+                  "Dalmatian",
+                  "Doberman pinscher",
+                  "English cocker spaniel",
+                  "English setter",
+                  "English springer spaniel",
+                  "English toy spaniel",
+                  "Eskimo dog",
+                  "Finnish spitz",
+                  "flat-coated retriever",
+                  "fox terrier",
+                  "foxhound",
+                  "French bulldog",
+                  "German shepherd",
+                  "German shorthaired pointer",
+                  "German wirehaired pointer",
+                  "golden retriever",
+                  "Gordon setter",
+                  "Great Dane",
+                  "greyhound",
+                  "Irish setter",
+                  "Irish water spaniel",
+                  "Irish wolfhound",
+                  "Jack Russell terrier",
+                  "Japanese spaniel",
+                  "keeshond",
+                  "Kerry blue terrier",
+                  "komondor",
+                  "kuvasz",
+                  "Labrador retriever",
+                  "Lakeland terrier",
+                  "Lhasa apso",
+                  "Maltese",
+                  "Manchester terrier",
+                  "mastiff",
+                  "Mexican hairless",
+                  "Newfoundland",
+                  "Norwegian elkhound",
+                  "Norwich terrier",
+                  "otterhound",
+                  "papillon",
+                  "Pekingese",
+                  "pointer",
+                  "Pomeranian",
+                  "poodle",
+                  "pug",
+                  "puli",
+                  "Rhodesian ridgeback",
+                  "Rottweiler",
+                  "Saint Bernard",
+                  "saluki",
+                  "Samoyed",
+                  "schipperke",
+                  "schnauzer",
+                  "Scottish deerhound",
+                  "Scottish terrier",
+                  "Sealyham terrier",
+                  "Shetland sheepdog",
+                  "shih tzu",
+                  "Siberian husky",
+                  "silky terrier",
+                  "Skye terrier",
+                  "Staffordshire bull terrier",
+                  "soft-coated wheaten terrier",
+                  "Sussex spaniel",
+                  "spitz",
+                  "Tibetan terrier",
+                  "vizsla",
+                  "Weimaraner",
+                  "Welsh terrier",
+                  "West Highland white terrier",
+                  "whippet",
+                  "Yorkshire terrier"
+                ]
+              }} property={breed} setProperty={setBreed} blankValue="Breed" />
+          </div>
         </div>
       </div>
       {/* <nav class="menuBar navbar navbar-expand-lg navbar-light bg-light">
@@ -100,7 +228,7 @@ export default function Home() {
         {cards.filter(
           (item) =>
             item.props.title.includes(nameFilter) &&
-            item.props.type.includes(type) && item.props.gender.includes(gender)
+            item.props.type.includes(type) && item.props.gender.includes(gender) // && item.props.breed.includes(breed) && item.props.size.includes(size)
         )}
       </div>
     </div>
