@@ -14,3 +14,65 @@
   width: 20%;
   height: 20%;
 }
+
+
+.mapHolder{
+  padding: 20px;
+  padding-right: 40px;
+  padding-left: 0;
+}
+
+.rowOne{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.split1{
+  flex: 1;
+  min-width: 600px;
+  /* max-width: 50%; */
+}
+
+.animalImg{
+  width: 100%;
+  position: relative;
+  padding: 40px;
+  padding-top: 0;
+}
+
+.petTextBox{
+  padding: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 40px;
+}
+
+.paraText{
+  font-size: 20px;
+}
+
+.petTitle{
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+}
+
+.rndBtn {
+  font-family: 'Nunito', sans-serif;
+  flex: 1;
+  background-color: #ffa353;
+  padding: 12px;
+  border-radius: 50px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 60px;
+  text-align: center;
+}
+
+.rndBtn:hover{
+  background-color: #ee8a33;
+}
+
+.sm-btn{
+  width: 130px;
+}
