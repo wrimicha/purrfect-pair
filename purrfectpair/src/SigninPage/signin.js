@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Modal, Button, Form, Alert } from "react-bootstrap";
 import "./signin.css";
 import { Link } from "react-router-dom";
@@ -15,8 +15,10 @@ const LoginModal = ({ modalShow, setShow }) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
+  const handleClose = () => {
+    setShow(false);
+    setError("");
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault(); //not needed unless using the form submit?
@@ -29,17 +31,14 @@ const LoginModal = ({ modalShow, setShow }) => {
       return setError("Password cannot be blank");
     }
 
-    try {
-      setError("");
-      setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value).then(
-        () => setShow(false)
-        // .then(() => history.push("/"))
-      );
-      addAdminRole();
-    } catch {
-      setError("Failed to sign in");
-    }
+    setError("");
+    setLoading(true);
+    await login(emailRef.current.value, passwordRef.current.value).then(
+      () => handleClose()
+      // .then(() => history.push("/"))
+    );
+    addAdminRole();
+    setError("Failed to sign in");
     setLoading(false);
   };
 
@@ -48,14 +47,15 @@ const LoginModal = ({ modalShow, setShow }) => {
       <Modal
         className="mainModal"
         centered
-        size="xl"
+        size="lg"
         dialogClassName="mainModal"
         show={modalShow}
         onHide={() => setShow(false)}
       >
         <div className="formMain">
           <h1 className="title">Welcome Back!</h1>
-          <Button className="closeBtn" onClick={() => setShow(false)}><VscChromeClose /></Button>
+          {error && <Alert variant="danger">{error}</Alert>}
+          <Button className="closeBtn" onClick={() => handleClose()}><VscChromeClose /></Button>
           <Form.Group className="formGroupStyle" controlId="formBasicEmail">
             <Form.Control
               className="inputText"

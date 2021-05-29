@@ -39,7 +39,7 @@
 
 .formGroupStyle {
   text-align: center;
-  margin: 80px;
+  margin: 60px;
 }
 
 .title {
@@ -96,7 +96,7 @@
   color: white;
   font-weight: bold;
   font-size: 24px;
-  margin: 7%;
+  margin: 60px;
 }
 
 .signinBtn:hover {

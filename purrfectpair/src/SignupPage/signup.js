@@ -21,6 +21,10 @@ const SignupModal = ({ modalShow, setShow }) => {
     const { addAdminRole } = useAuth();
     // const [show, setShow] = useState(true);
 
+    const handleClose = () => {
+        setShow(false);
+        setError("");
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault(); //not needed unless using the form submit?
@@ -41,16 +45,15 @@ const SignupModal = ({ modalShow, setShow }) => {
             return setError("Passwords do not match");
         }
 
-        try {
-            setError("");
-            setLoading(true);
-            signup(
-                emailRef.current.value,
-                passwordRef.current.value,
-            ).then(() => setShow(false));
-        } catch {
-            setError("Failed to create an account");
-        }
+        setError("");
+        setLoading(true);
+        signup(
+            emailRef.current.value,
+            passwordRef.current.value,
+        ).then(() => handleClose())
+            .catch((e) => {
+                setError(e.message);
+            });
         setLoading(false);
     };
 
@@ -59,17 +62,17 @@ const SignupModal = ({ modalShow, setShow }) => {
             <Modal
                 className="mainModal"
                 centered
-                size="xl"
+                size="lg"
                 dialogClassName="mainModal"
                 show={modalShow}
                 onHide={() => setShow(false)}
             >
                 <div className="formMain">
-                    <h1 className="title">Welcome Back!</h1>
+                    <h1 className="title">Welcome!</h1>
                     {error && <Alert variant="danger">{error}</Alert>}
 
                     {/* <div style={{ display: "flex", justifyContent: "space-between" }}> */}
-                    <Button className="closeBtn" onClick={() => setShow(false)}><VscChromeClose /></Button>
+                    <Button className="closeBtn" onClick={() => handleClose()}><VscChromeClose /></Button>
                     {/* <Form.Group className="formGroupStyle" controlId="formBasicName">
                         <Form.Control
                             className="inputText"
