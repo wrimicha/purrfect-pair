@@ -13,7 +13,6 @@ function NavMenu() {
   const [signupModalShow, setSignupModalShow] = useState(false);
   const [userInfoShow, setUserInfoShow] = useState(false);
 
-
   return (
     <>
       <SigninModal

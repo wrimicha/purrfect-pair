@@ -41,7 +41,6 @@ function App() {
 
       <Router>
         <AuthProvider>
-
           <Nav />
           <Switch>
             <Route exact path="/home" component={HomePage} />
