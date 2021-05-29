@@ -4,10 +4,15 @@ import { Link } from "react-router-dom";
 import "../nav/nav.css";
 import SigninModal from "../SigninPage/signin";
 import SignupModal from "../SignupPage/signup";
+//import { auth } from "../Firebase";
+import { useAuth } from "../conexts/AuthContext";
 
 function NavMenu() {
+  const { currentUser, logout } = useAuth();
   const [signinModalShow, setSigninModalShow] = useState(false);
   const [signupModalShow, setSignupModalShow] = useState(false);
+  const [userInfoShow, setUserInfoShow] = useState(false);
+
 
   return (
     <>
@@ -47,6 +52,17 @@ function NavMenu() {
               <Link to="/contact" className="nav-link">
                 <li>Contact</li>
               </Link>
+
+              <Link
+                // style={{ display: "none" }}
+                to="/logout"
+                class="nav-link logged-in"
+                onClick={() => logout()}
+              >
+                <li class="logged-in">
+                  Logout
+                </li>
+              </Link>
               <Link
                 to="/signin"
                 className="nav-link"
@@ -60,6 +76,12 @@ function NavMenu() {
                 onClick={() => setSignupModalShow(true)}
               >
                 <li>Sign Up</li>
+              </Link>
+              <Link
+                onClick={() => setUserInfoShow(true)}
+                className="nav-link"
+              >
+                <li>{currentUser && currentUser.email}</li>
               </Link>
             </ul>
           </div>
