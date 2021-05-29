@@ -19,9 +19,9 @@ function NavMenu() {
         modalShow={signupModalShow} //createModalShow
         setShow={setSignupModalShow}
       />
-      <nav class="menuBar navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
+      <nav className="menuBar navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="/">
             <img
               style={{ width: "250px" }}
               src={require("../imgs/purrfect_pair.png").default}
@@ -29,7 +29,7 @@ function NavMenu() {
             />
           </a>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
@@ -37,11 +37,11 @@ function NavMenu() {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="menuOptions collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <Link to="/home" class="nav-link">
+          <div className="menuOptions collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <Link to="/home" className="nav-link">
                 <li>Home</li>
               </Link>
               <Link to="/contact" className="nav-link">

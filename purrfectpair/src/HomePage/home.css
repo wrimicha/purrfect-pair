@@ -90,7 +90,11 @@
 .dropdownselect:focus:not(.focus-visible){
   outline:none;
 }
-
+.dropdownselect option{
+  background-color: #ffa353;
+  padding: 10px;
+  font-size: medium;
+}
 .dropdownselect{
   font-weight: bold;
 }

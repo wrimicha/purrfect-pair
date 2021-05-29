@@ -12,9 +12,10 @@ export default function Home() {
   const [dogClicked, setDogClicked] = useState(false);
   const [cards, setCards] = useState([]);
   const [fetchedData,setFetchedData] = useState([]);
+  const [genderToggle,setGenderToggle] = useState(false);
   const [gender,setGender] = useState("");
   useEffect( () => {
-    fetch('https://petpracticeapi.herokuapp.com/pets').then((res)=>{
+    fetch('https://purrfectpairapi.herokuapp.com/pets').then((res)=>{
       res.json().then((resp)=>{
         console.log(resp)
         resp.map((item) =>{
@@ -23,6 +24,7 @@ export default function Home() {
           <AnimalCard
             id={item.id}
             title={item.name}
+            gender={item.gender}
             type={item.type}
             description=""
             //lat={item.lat}
@@ -37,7 +39,6 @@ export default function Home() {
     
 
   }, []);
-
   return (
     <div className="animalCardHolder">
       <div className="filterGroup">
@@ -72,7 +73,9 @@ export default function Home() {
         </div>
         <div id="secondFilterGroup">
         <div className="dropdown">
-        <select className="dropdownselect" name="type" onChange={event=>setGender(event.target.value)}>
+        <select className="dropdownselect" name="type" onChange={event=>{setGender(event.target.value)
+        console.dir(event.target)
+        }}>
           <option value="" selected="selected">Gender</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
@@ -94,7 +97,7 @@ export default function Home() {
         {cards.filter(
           (item) =>
             item.props.title.includes(nameFilter) &&
-            item.props.type.includes(type) 
+            item.props.type.includes(type) && item.props.gender.includes(gender)
         )}
       </div>
     </div>
