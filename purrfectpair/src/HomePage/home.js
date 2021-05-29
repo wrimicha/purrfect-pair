@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import AnimalCard from "../Compnents/AnimalCard";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'antd/dist/antd.css';
 import "../constants/colors";
 import "./home.css";
+import { Menu, Dropdown } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
 import ButtonTemplate from "../Compnents/ButtonTemplate/ButtonTemplate";
 import colors from "../constants/colors";
 export default function Home() {
@@ -11,77 +14,94 @@ export default function Home() {
   const [catClicked, setCatClicked] = useState(false);
   const [dogClicked, setDogClicked] = useState(false);
   const [cards, setCards] = useState([]);
-  const [fetchedData,setFetchedData] = useState([]);
-  const [genderToggle,setGenderToggle] = useState(false);
-  const [gender,setGender] = useState("");
-  useEffect( () => {
-    fetch('https://purrfectpairapi.herokuapp.com/pets').then((res)=>{
-      res.json().then((resp)=>{
+  const [fetchedData, setFetchedData] = useState([]);
+  const [genderToggle, setGenderToggle] = useState(false);
+  const [gender, setGender] = useState("");
+  const menu = (
+    <Menu style={{ paddingLeft: 30, paddingRight: 30, marginLeft: -30, borderBottomLeftRadius: 30, borderBottomRightRadius: 30, marginTop: 10 }}>
+      <Menu.Item>
+        <a target="_blank" rel="noopener noreferrer" onClick={() => setGender("")}>
+          Gender
+        </a>
+      </Menu.Item>
+      <Menu.Item>
+        <a target="_blank" rel="noopener noreferrer" onClick={() => setGender("Male")}>
+          Male
+        </a>
+      </Menu.Item>
+      <Menu.Item>
+        <a target="_blank" rel="noopener noreferrer" onClick={() => setGender("Female")}>
+          Female
+        </a>
+      </Menu.Item>
+    </Menu>
+  );
+  useEffect(() => {
+    fetch('https://purrfectpairapi.herokuapp.com/pets').then((res) => {
+      res.json().then((resp) => {
         console.log(resp)
-        resp.map((item) =>{
-        setCards((card) => [
-          ...card,
-          <AnimalCard
-            id={item.id}
-            title={item.name}
-            gender={item.gender}
-            type={item.type}
-            description=""
+        resp.map((item) => {
+          setCards((card) => [
+            ...card,
+            <AnimalCard
+              id={item.id}
+              title={item.name}
+              gender={item.gender}
+              type={item.type}
+              description=""
             //lat={item.lat}
             //long={item.long}
-          />,
-        ])}
-      );
+            />,
+          ])
+        }
+        );
       })
-    }).catch((err)=>{
-      throw(err);
+    }).catch((err) => {
+      throw (err);
     })
-    
-
+    console.dir(menu);
   }, []);
   return (
     <div className="animalCardHolder">
       <div className="filterGroup">
         <div id="firstFilterGroup">
-        <div className="searchBar">
-          <input
-            className="searchInput"
-            placeholder="Zip/Postal Code"
-            type="text"
-            onChange={(event) => setNameFilter(event.target.value)}
-          />
-        </div>
-        <div
-          className="radio-toolbar animalType"
-          onChange={(e) => setType(e.target.value)}
-        >
-          <input
-            type="radio"
-            id="radio1"
-            name="radios"
-            value=""
-            defaultChecked
-          />
-          <label for="radio1">All</label>
+          <div className="searchBar">
+            <input
+              className="searchInput"
+              placeholder="Zip/Postal Code"
+              type="text"
+              onChange={(event) => setNameFilter(event.target.value)}
+            />
+          </div>
+          <div
+            className="radio-toolbar animalType"
+            onChange={(e) => setType(e.target.value)}
+          >
+            <input
+              type="radio"
+              id="radio1"
+              name="radios"
+              value=""
+              defaultChecked
+            />
+            <label for="radio1">All</label>
 
-          <input type="radio" id="radio2" name="radios" value="Dog" />
-          <label for="radio2">Dog</label>
+            <input type="radio" id="radio2" name="radios" value="Dog" />
+            <label for="radio2">Dog</label>
 
-          <input type="radio" id="radio3" name="radios" value="Cat" />
-          <label for="radio3">Cat</label>
-        </div>
+            <input type="radio" id="radio3" name="radios" value="Cat" />
+            <label for="radio3">Cat</label>
+          </div>
         </div>
         <div id="secondFilterGroup">
-        <div className="dropdown">
-        <select className="dropdownselect" name="type" onChange={event=>{setGender(event.target.value)
-        console.dir(event.target)
-        }}>
-          <option value="" selected="selected">Gender</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          </select>
+          <div className="dropdown">
+            <Dropdown overlay={menu}>
+              <a className="ant-dropdown-link" style={{ color: "black" }} onClick={e => e.preventDefault()}>
+                {gender.length === 0 ? 'Gender' : gender} <DownOutlined />
+              </a>
+            </Dropdown>
+          </div>
         </div>
-      </div>
       </div>
       {/* <nav class="menuBar navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
