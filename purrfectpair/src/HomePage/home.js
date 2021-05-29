@@ -8,6 +8,7 @@ import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import ButtonTemplate from "../Compnents/ButtonTemplate/ButtonTemplate";
 import colors from "../constants/colors";
+import DropdownNew from "../Compnents/Dropdown/DropdownNew";
 export default function Home() {
   const [nameFilter, setNameFilter] = useState("");
   const [type, setType] = useState("");
@@ -17,29 +18,10 @@ export default function Home() {
   const [fetchedData, setFetchedData] = useState([]);
   const [genderToggle, setGenderToggle] = useState(false);
   const [gender, setGender] = useState("");
-  const menu = (
-    <Menu style={{ marginLeft: -23, borderBottomLeftRadius: 30, borderBottomRightRadius: 30 }}>
-      <Menu.Item className="MenuItem" style={{paddingLeft:30,paddingRight:30,marginTop:-5}}>
-        <a target="_blank" rel="noopener noreferrer" onClick={() => setGender("")}>
-          Gender
-        </a>
-      </Menu.Item>
-      <Menu.Item className="MenuItem" style={{paddingLeft:30,paddingRight:30}}>
-        <a target="_blank" rel="noopener noreferrer" onClick={() => setGender("Male")}>
-          Male
-        </a>
-      </Menu.Item>
-      <Menu.Item className="MenuItem" style={{paddingLeft:30,paddingRight:30,borderBottomLeftRadius:30,borderBottomRightRadius:30,marginBottom:-5}}>
-        <a target="_blank" rel="noopener noreferrer" onClick={() => setGender("Female")}>
-          Female
-        </a>
-      </Menu.Item>
-    </Menu>
-  );
+  const genders = ["","Male","Female"];
   useEffect(() => {
     fetch('https://purrfectpairapi.herokuapp.com/pets').then((res) => {
       res.json().then((resp) => {
-        console.log(resp)
         resp.map((item) => {
           setCards((card) => [
             ...card,
@@ -59,7 +41,6 @@ export default function Home() {
     }).catch((err) => {
       throw (err);
     })
-    console.dir(menu);
   }, []);
   return (
     <div className="animalCardHolder">
@@ -95,11 +76,7 @@ export default function Home() {
         </div>
         <div id="secondFilterGroup">
           <div className="dropdown">
-            <Dropdown overlay={menu}>
-              <a className="ant-dropdown-link" style={{ color: "black" }} onClick={e => e.preventDefault()}>
-                {gender.length === 0 ? 'Gender' : gender} <DownOutlined />
-              </a>
-            </Dropdown>
+            <DropdownNew items={genders} property={gender} setProperty={setGender} blankValue="Gender"/>
           </div>
         </div>
       </div>
