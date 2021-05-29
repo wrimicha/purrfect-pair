@@ -18,8 +18,8 @@ export default function Home() {
   const [genderToggle, setGenderToggle] = useState(false);
   const [gender, setGender] = useState("");
   const menu = (
-    <Menu style={{ marginLeft: -23, borderBottomLeftRadius: 30, borderBottomRightRadius: 30, marginTop: 10 }}>
-      <Menu.Item className="MenuItem" style={{paddingLeft:30,paddingRight:30}}>
+    <Menu style={{ marginLeft: -23, borderBottomLeftRadius: 30, borderBottomRightRadius: 30 }}>
+      <Menu.Item className="MenuItem" style={{paddingLeft:30,paddingRight:30,marginTop:-5}}>
         <a target="_blank" rel="noopener noreferrer" onClick={() => setGender("")}>
           Gender
         </a>
