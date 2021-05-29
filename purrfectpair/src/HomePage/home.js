@@ -67,11 +67,14 @@ export default function Home() {
             />
             <label for="radio1">All</label>
 
-            <input type="radio" id="radio2" name="radios" value="Dog" />
-            <label for="radio2">Dog</label>
+            <input type="radio" id="radio2" name="radios" value="dogs" />
+            <label for="radio2">Dogs</label>
 
-            <input type="radio" id="radio3" name="radios" value="Cat" />
-            <label for="radio3">Cat</label>
+            <input type="radio" id="radio3" name="radios" value="cats" />
+            <label for="radio3">Cats</label>
+          </div>
+          <div className="dropdown">
+          <DropdownNew items={["","rabbits","birds","frogs","fishes", "frogs", "geckos", "iguanas", "lizards","scorpions","snakes","tarantulas","toads","tortoises","turtles","hamsters"]} property={type} setProperty={setType} blankValue="Other"/>
           </div>
         </div>
         <div id="secondFilterGroup">
