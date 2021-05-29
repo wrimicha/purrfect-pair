@@ -9,6 +9,7 @@ import { DownOutlined } from '@ant-design/icons';
 import ButtonTemplate from "../Compnents/ButtonTemplate/ButtonTemplate";
 import colors from "../constants/colors";
 import DropdownNew from "../Compnents/Dropdown/DropdownNew";
+import DropdownConditional from "../Compnents/Dropdown/DropdownConditional";
 export default function Home() {
   const [nameFilter, setNameFilter] = useState("");
   const [type, setType] = useState("");
@@ -19,6 +20,7 @@ export default function Home() {
   const [genderToggle, setGenderToggle] = useState(false);
   const [gender, setGender] = useState("");
   const [hair,setHair] = useState("");
+  const [size,setSize] = useState("");
   useEffect(() => {
     fetch('https://purrfectpairapi.herokuapp.com/pets').then((res) => {
       res.json().then((resp) => {
@@ -74,7 +76,7 @@ export default function Home() {
             <label for="radio3">Cats</label>
           </div>
           <div className="dropdown">
-          <DropdownNew items={["","rabbits","birds","frogs","fishes", "frogs", "geckos", "iguanas", "lizards","scorpions","snakes","tarantulas","toads","tortoises","turtles","hamsters"]} property={type} setProperty={setType} blankValue="Other"/>
+          <DropdownNew items={["","rabbits","birds","frogs","fishs", "frogs", "geckos", "iguanas", "lizards","scorpions","snakes","tarantulas","toads","tortoises","turtles","hamsters"]} property={type} setProperty={setType} blankValue="Other"/>
           </div>
         </div>
         <div id="secondFilterGroup">
@@ -83,6 +85,9 @@ export default function Home() {
             </div>
             <div className="dropdown">
             <DropdownNew items={["","Short","Medium","Long"]} property={hair} setProperty={setHair} blankValue="Hair"/>
+            </div>
+            <div className="dropdown">
+              <DropdownConditional selectedPet={type} items={{"":[],"cats":["young", "adult", "senior", "kitten"],"dogs":["young", "adult", "senior", "puppy"],"rabbits":["young", "adult", "senior"],"birds":["Small", "Medium", "Large"],"hamsters":["young", "adult", "senior"],"others":["Small", "Medium", "Large"]}} property={size} setProperty={setSize} blankValue="Size"/>
             </div>
         </div>
       </div>
