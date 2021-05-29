@@ -1,12 +1,12 @@
 .menuOptions,
 .navbar-brand {
-  justify-content: flex-end;
-  margin-right: 120px;
-  margin-left: 120px;
+  margin-left: 40px;
   padding: 10px;
 }
 
 .menuOptions li {
+  justify-content: flex-end !important;
+
   margin: 15px;
 }
 
@@ -18,6 +18,11 @@
 .menuOptions .navlink {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+  justify-content: flex-end !important;
+}
+
+.navbar-nav{
+  margin-right: 0 !important;
 }
 
 .navbar,
