@@ -24,6 +24,7 @@ export default function Home() {
   const [breed, setBreed] = useState("");
   const [loading, setLoading] = useState(true);
   const [pets, setPets] = useState([]);
+  const [age,setAge] = useState("");
 
   useEffect(() => {
     fetch('https://purrfectpairapi.herokuapp.com/pets').then((res) => {
@@ -36,9 +37,13 @@ export default function Home() {
               title={item.name}
               gender={item.gender}
               type={item.type}
+              size={item.size}
+              age={item.age}
+              hair={item.hair}
+              breed={item.breed}
               description=""
-            //lat={item.lat}
-            //long={item.long}
+              lat={item.latitude}
+              long={item.longitude}
             />,
           ])
         }
@@ -93,15 +98,19 @@ export default function Home() {
               <DropdownNew items={["", "Male", "Female"]} property={gender} setProperty={setGender} blankValue="Gender" />
             </div>
             <div className="dropdown">
-              <DropdownNew items={["", "Short", "Medium", "Long"]} property={hair} setProperty={setHair} blankValue="Hair" />
+              <DropdownNew items={["", "white", "brown", "grey","black","green","golden"]} property={hair} setProperty={setHair} blankValue="Hair" />
             </div>
             <div className="dropdown">
-              <DropdownConditional selectedPet={type} items={{ "": [], "cats": ["young", "adult", "senior", "kitten"], "dogs": ["young", "adult", "senior", "puppy"], "rabbits": ["young", "adult", "senior"], "birds": ["Small", "Medium", "Large"], "hamsters": ["young", "adult", "senior"], "others": ["Small", "Medium", "Large"] }} property={size} setProperty={setSize} blankValue="Size" />
+            <DropdownNew items={["", "large", "medium", "small"]} property={size} setProperty={setSize} blankValue="Size" />
+            </div>
+            <div className="dropdown">
+              <DropdownNew items={["","young","adult","senior"]} property={age} setProperty={setAge} blankValue="Age"/>
             </div>
             <div className="dropdown">
               <DropdownConditional selectedPet={type}
                 items={{
-                  "": [], "cats": ["Abyssinian", "American Bobtail", "American Curl", "American Shorthair", "American Wirehair", "Balinese", "Bengal", "Birman", "Bombay", "British Shorthair", "Burmese", "Calico", "Chartreux", "Colorpoint Shorthair", "Cornish Rex", "Cymric", "Devon Rex", "Domestic Longhair", "Domestic Mediumhair", "Domestic Shorthair", "Egyptian Mau", "European Burmese", "Exotic", "Havana Brown", "Hemingway/Polydactyl", "Himalayan", "Japanese Bobtail", "Japanese", "Korat", "LaPerm", " Maine Coon", "Manx", "Munchkin", "Nebelung", "Norwegian Forest Cat", "Ocicat", "Oriental", "Persian", "Polydactyl/Hemingway", "RagaMuffin", "Ragdoll", "Russian Blue", "Scottish Fold", "Selkirk Rex", "Siamese", "Siberian", "Singapura", "Snowshoe", "Somali", "Sphynx", "Tonkinese", "Turkish Angora", "Turkish Van"], "dogs": ["young", "adult", "senior", "puppy"], "rabbits": ["young", "adult", "senior"], "birds": ["Small", "Medium", "Large"], "hamsters": ["young", "adult", "senior"], "others": ["Small", "Medium", "Large"], "dogs": [
+                  "": [], "cats": ["","Abyssinian", "American Bobtail", "American Curl", "American Shorthair", "American Wirehair", "Balinese", "Bengal", "Birman", "Bombay", "British Shorthair", "Burmese", "Calico", "Chartreux", "Colorpoint Shorthair", "Cornish Rex", "Cymric", "Devon Rex", "Domestic Longhair", "Domestic Mediumhair", "Domestic Shorthair", "Egyptian Mau", "European Burmese", "Exotic", "Havana Brown", "Hemingway/Polydactyl", "Himalayan", "Japanese Bobtail", "Japanese", "Korat", "LaPerm", " Maine Coon", "Manx", "Munchkin", "Nebelung", "Norwegian Forest Cat", "Ocicat", "Oriental", "Persian", "Polydactyl/Hemingway", "RagaMuffin", "Ragdoll", "Russian Blue", "Scottish Fold", "Selkirk Rex", "Siamese", "Siberian", "Singapura", "Snowshoe", "Somali", "Sphynx", "Tonkinese", "Turkish Angora", "Turkish Van"], "dogs": ["young", "adult", "senior", "puppy"], "rabbits": ["young", "adult", "senior"], "birds": ["Small", "Medium", "Large"], "hamsters": ["young", "adult", "senior"], "others": ["Small", "Medium", "Large"], 
+                  "dogs": ["",
                     "affenpinscher",
                     "Afghan hound",
                     "Airedale terrier",
@@ -157,9 +166,9 @@ export default function Home() {
                     "fox terrier",
                     "foxhound",
                     "French bulldog",
-                    "German shepherd",
-                    "German shorthaired pointer",
-                    "German wirehaired pointer",
+                    "german shepherd",
+                    "german shorthaired pointer",
+                    "german wirehaired pointer",
                     "golden retriever",
                     "Gordon setter",
                     "Great Dane",
@@ -240,8 +249,11 @@ export default function Home() {
         <div style={{ display: "flex", flexWrap: "wrap" }}>
           {cards.filter(
             (item) =>
-              item.props.title.includes(nameFilter) &&
-              item.props.type.includes(type) && item.props.gender.includes(gender) // && item.props.breed.includes(breed) && item.props.size.includes(size)
+            item.props.title.includes(nameFilter) &&
+              item.props.type.includes(type) 
+              && item.props.gender.includes(gender)
+               && item.props.breed.includes(breed) 
+              && item.props.size.includes(size) && item.props.hair.includes(hair) && item.props.age.includes(age)
           )}
         </div>
       </div>
