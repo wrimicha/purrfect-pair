@@ -86,7 +86,7 @@ function NavMenu() {
               >
                 <li>
                   <div className="dropdown">
-                    <DropdownNew items={["", <Link to="/account">Account Info</Link>, <Link to="/favourites">Favourites</Link>]} property={userOption} setProperty={setUserOption} blankValue={currentUser && currentUser.email} />
+                    <DropdownNew items={["", <Link style={{ color: "black" }} to="/account">Account Info</Link>, <Link style={{ color: "black" }} to="/favourites">Favourites</Link>]} property={userOption} setProperty={setUserOption} blankValue={currentUser && currentUser.email} />
                   </div>
                 </li>
               </Link>
