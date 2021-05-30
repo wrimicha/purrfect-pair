@@ -250,10 +250,10 @@ export default function Home() {
           {cards.filter(
             (item) =>
             item.props.title.includes(nameFilter) &&
-              item.props.type.includes(type) 
-              && item.props.gender.includes(gender)
-               && item.props.breed.includes(breed) 
-              && item.props.size.includes(size) && item.props.hair.includes(hair) && item.props.age.includes(age)
+              item.props.type.includes(type.slice(1,type.length-1)) 
+              && item.props.gender.includes(gender.slice(1,type.length-1))
+               && item.props.breed.includes(breed.slice(1,type.length-1)) 
+              && item.props.size.includes(size.slice(1,type.length-1)) && item.props.hair.includes(hair.slice(1,type.length-1)) && item.props.age.includes(age.slice(1,type.length-1))
           )}
         </div>
       </div>
