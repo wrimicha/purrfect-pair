@@ -56,10 +56,6 @@ function NavMenu() {
               <Link to="/home" className="nav-link">
                 <li>Home</li>
               </Link>
-              <Link to="/contact" className="nav-link">
-                <li>Contact</li>
-              </Link>
-
               <Link
                 // style={{ display: "none" }}
                 to="/logout"
@@ -85,7 +81,7 @@ function NavMenu() {
               <Link>
                 <li>
                   <div className="dropdown">
-                  <DropdownNew items={["",<Link to="/account">Account Info</Link>, <Link to="/favourites">Favourites</Link>, <Link onClick={() => logout()}>Signout</Link>]} property={userOption} setProperty={setUserOption} blankValue={currentUser && currentUser.email} />
+                    <DropdownNew items={["", <Link to="/account">Account Info</Link>, <Link to="/favourites">Favourites</Link>, <Link onClick={() => logout()}>Signout</Link>]} property={userOption} setProperty={setUserOption} blankValue={currentUser && currentUser.email} />
                   </div>
                 </li>
               </Link>
