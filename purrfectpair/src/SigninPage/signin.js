@@ -42,7 +42,6 @@ const LoginModal = ({ modalShow, setShow }) => {
       setError(e.message);
     });
     addAdminRole();
-    setError("Failed to sign in");
     setLoading(false);
   };
 

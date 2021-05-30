@@ -5,10 +5,11 @@ import "../nav/nav.css";
 import SigninModal from "../SigninPage/signin";
 import SignupModal from "../SignupPage/signup";
 import UserInfo from "../UserInfo/UserInfo";
-//import { auth } from "../Firebase";
+import { auth } from "../Firebase";
 import { useAuth } from "../conexts/AuthContext";
 import DropdownNew from "../Compnents/Dropdown/DropdownNew";
-
+import ConditionalNav from "./NavFunctions";
+import Button from 'react-bootstrap/Button';
 
 function NavMenu() {
   const { currentUser, logout } = useAuth();
@@ -16,6 +17,8 @@ function NavMenu() {
   const [signupModalShow, setSignupModalShow] = useState(false);
   const [userInfoShow, setUserInfoShow] = useState(false);
   const [userOption, setUserOption] = useState("");
+
+  auth.onAuthStateChanged(() => ConditionalNav(currentUser));
 
   return (
     <>
@@ -67,21 +70,23 @@ function NavMenu() {
                 </li>
               </Link>
               <Link
-                className="nav-link"
+                className="nav-link logged-out"
                 onClick={() => setSigninModalShow(true)}
               >
                 <li>Sign In</li>
               </Link>
               <Link
-                className="nav-link"
+                className="nav-link logged-out"
                 onClick={() => setSignupModalShow(true)}
               >
                 <li>Sign Up</li>
               </Link>
-              <Link>
+              <Link
+                className="logged-in"
+              >
                 <li>
                   <div className="dropdown">
-                    <DropdownNew items={["", <Link to="/account">Account Info</Link>, <Link to="/favourites">Favourites</Link>, <Link onClick={() => logout()}>Signout</Link>]} property={userOption} setProperty={setUserOption} blankValue={currentUser && currentUser.email} />
+                    <DropdownNew items={["", <Link to="/account">Account Info</Link>, <Link to="/favourites">Favourites</Link>]} property={userOption} setProperty={setUserOption} blankValue={currentUser && currentUser.email} />
                   </div>
                 </li>
               </Link>

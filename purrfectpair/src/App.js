@@ -23,6 +23,8 @@ import NavMenu from "./nav/nav";
 import HomePage from "./HomePage/home";
 import Contact from "./ContactPage/contact";
 import ViewPet from "./ViewPetPage/viewPet";
+import AccountPage from "./AccountPage/Account";
+import FavouritesPage from "./FavouritesPage/favourite";
 
 function App() {
   const [userSignedIn, setUserSignedIn] = useState(false);
@@ -47,6 +49,8 @@ function App() {
               <Redirect to="/home" />
             </Route>
             <Route exact path="/contact" component={Contact} />
+            <Route exact path="/account" component={AccountPage} />
+            <Route exact path="/favourites" component={FavouritesPage} />
             {/* <Route exact path="/signin" component={Signin} /> */}
             <Route path="/viewPet/:id" component={ViewPet} />
           </Switch>

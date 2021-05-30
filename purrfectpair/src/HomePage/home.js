@@ -52,35 +52,36 @@ export default function Home() {
           <div className="searchBar">
             <input
               className="searchInput"
-              placeholder="Zip/Postal Code"
+              placeholder="Search By Name"
               type="text"
               onChange={(event) => setNameFilter(event.target.value)}
             />
           </div>
-          <div
-            className="radio-toolbar animalType"
-            onChange={(e) => setType(e.target.value)}
-          >
-            <input
-              type="radio"
-              id="radio1"
-              name="radios"
-              value=""
-              defaultChecked
-            />
-            <label for="radio1">All</label>
+        </div>
 
-            <input type="radio" id="radio2" name="radios" value="dogs" />
-            <label for="radio2">Dogs</label>
+        <div
+          className="radio-toolbar animalType"
+          onChange={(e) => setType(e.target.value)}
+        >
+          <input
+            type="radio"
+            id="radio1"
+            name="radios"
+            value=""
+            defaultChecked
+          />
+          <label for="radio1">All</label>
 
-            <input type="radio" id="radio3" name="radios" value="cats" />
-            <label for="radio3">Cats</label>
-          </div>
+          <input type="radio" id="radio2" name="radios" value="dogs" />
+          <label for="radio2">Dogs</label>
+
+          <input type="radio" id="radio3" name="radios" value="cats" />
+          <label for="radio3">Cats</label>
+
           <div className="dropdown">
             <DropdownNew items={["", "rabbits", "birds", "frogs", "fishs", "frogs", "geckos", "iguanas", "lizards", "scorpions", "snakes", "tarantulas", "toads", "tortoises", "turtles", "hamsters"]} property={type} setProperty={setType} blankValue="Other" />
           </div>
-        </div>
-        <div id="secondFilterGroup">
+
           <div className="dropdown">
             <DropdownNew items={["", "Male", "Female"]} property={gender} setProperty={setGender} blankValue="Gender" />
           </div>
@@ -212,7 +213,12 @@ export default function Home() {
                 ]
               }} property={breed} setProperty={setBreed} blankValue="Breed" />
           </div>
+
         </div>
+
+        {/* <div id="secondFilterGroup">
+          
+        </div> */}
       </div>
       {/* <nav class="menuBar navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
