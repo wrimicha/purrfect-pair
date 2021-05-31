@@ -24,8 +24,8 @@ export default function AnimalCard(props) {
           <p>About the pet:</p>
           <p className="petInfo">Type: {props.type.charAt(props.type.length-1) != 's' ? props.type.charAt(0).toUpperCase()+props.type.slice(1,props.type.length) : props.type.charAt(0).toUpperCase()+props.type.slice(1,props.type.length-1)}</p>
           <p className="petInfo">Gender: {props.gender}</p>     
-          <p>Size: {props.size}</p>
-          <p>Age: {props.age}</p>
+          <p className="petInfo">Size: {props.size}</p>
+          <p className="petInfo">Age: {props.age}</p>
           <p className="petInfo">{props.description}</p>
         </div>
       </div>
