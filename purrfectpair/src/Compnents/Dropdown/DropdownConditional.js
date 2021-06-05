@@ -8,7 +8,7 @@ export default function DropdownConditional(props) {
   const [currentType, setCurrentType] = useState(props.selectedPet);
   const mid = () => {
     const elements = [];
-    try{ 
+    if(props.items[props.selectedPet].length != 0 || props.items[props.selectedPet].length != undefined  ){
     if (props.items[props.selectedPet].length > 0) {
       for (let i = 1; i < props.items[props.selectedPet].length - 1; i++) {
         elements.push(
@@ -19,12 +19,9 @@ export default function DropdownConditional(props) {
           </Menu.Item>
         )
       }
+    }
       return elements;
     }
-  }
-  catch(e){
-    alert("Empty Field");
-  }
   }
 
   const menu = (

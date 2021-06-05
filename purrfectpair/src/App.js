@@ -22,6 +22,8 @@ import { AuthProvider } from "./conexts/AuthContext";
 import NavMenu from "./nav/nav";
 import HomePage from "./HomePage/home";
 import Contact from "./ContactPage/contact";
+import 'jquery';
+import 'bootstrap/dist/js/bootstrap';
 import ViewPet from "./ViewPetPage/viewPet";
 import AccountPage from "./AccountPage/Account";
 import FavouritesPage from "./FavouritesPage/favourite";
