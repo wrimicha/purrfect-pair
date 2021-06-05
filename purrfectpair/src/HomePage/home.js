@@ -35,7 +35,7 @@ export default function Home() {
             <AnimalCard
               id={item.id}
               title={item.name}
-              gender={item.gender}
+              gender={item.gender.charAt(0).toUpperCase()+item.gender.slice(1,item.gender.length)}
               type={item.type}
               size={item.size}
               age={item.age}
@@ -125,7 +125,7 @@ export default function Home() {
             (item) =>
             item.props.title.includes(nameFilter) &&
               item.props.type.includes(type.slice(1,type.length-1)) 
-              && item.props.gender.includes(gender.slice(1,type.length-1))
+              && item.props.gender.includes(gender.charAt(0).toUpperCase()+gender.slice(1,gender.length-1))
                && item.props.breed.includes(breed.slice(1,type.length-1)) 
               && item.props.size.includes(size.slice(1,type.length-1)) && item.props.hair.includes(hair.slice(1,type.length-1)) && item.props.age.includes(age.slice(1,type.length-1))
           )}
