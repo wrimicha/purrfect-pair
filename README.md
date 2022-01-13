@@ -1,5 +1,6 @@
 # purrfect-pair
 Purrfect Pair is a website which is intended to facilitate the adoption of animals from animal shelters.
+![Screen Shot 2022-01-13 at 5 32 25 PM](https://user-images.githubusercontent.com/60019847/149419482-53d16e40-43bd-4730-bfcc-e30c81c7e609.png)
 
 # What Problem Does it Solve?
 Purrfect Pair helps users to adopt pets in an efficient manner based on their preference and location. Purrfect Pair also helps to match people with a companion which aims to improve mental health and loneliness and promote animal adoption.
